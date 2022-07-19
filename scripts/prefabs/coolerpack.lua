@@ -42,13 +42,18 @@ local function fn()
     
     inst.foleysound = "dontstarve/movement/foley/backpack"
 	
-	inst:AddTag("fridge")
+	-- inst:AddTag("fridge")
+
+   
+
+    MakeInventoryFloatable(inst, "small", 0.1, 0.85)
+
+
+    inst.entity:SetPristine()
 
     if not TheWorld.ismastersim then
         return inst
     end
-
-    inst.entity:SetPristine()
     
     inst:AddComponent("inspectable")
     

@@ -61,7 +61,6 @@ local Ingredient = GLOBAL.Ingredient
 local TECH = GLOBAL.TECH
 
 
-
 local containers = require "containers"
 
 local params = {}
@@ -84,9 +83,81 @@ function containers.widgetsetup(container, prefab)
     end
 end
 
+params.coolerpack = {
+    widget =
+    {
+        slotpos = {},
+        animbank = "ui_backpack_2x4",
+        animbuild = "ui_backpack_2x4",
+        pos = GLOBAL.Vector3(-5, -50, 0),
+    },
+    issidewidget = true,
+    type = "pack",
+}
+
+for y = 0, 3 do
+    table.insert(params.coolerpack.widget.slotpos, GLOBAL.Vector3(-162, -75 * y + 114, 0))
+    table.insert(params.coolerpack.widget.slotpos, GLOBAL.Vector3(-162 + 75, -75 * y + 114, 0))
+end
+
+function params.coolerpack.itemtestfn(container, item, slot)
+    -- if item.prefab == "spoiled_food" then
+    --     return true
+    -- end
+
+    -- --Perishable
+    -- if not (item:HasTag("fresh") or item:HasTag("stale") or item:HasTag("spoiled")) then
+    --     return false
+    -- end
+
+    -- --Edible
+    -- for k, v in pairs(GLOBAL.FOODTYPE) do
+    --     if item:HasTag("edible_" .. v) then
+    --         return true
+    --     end
+    -- end
+
+    return true
+end
+
+-- local function update_recipe(self, ingredients, tab, level, min_spacing, nounlock, numtogive)
+--     self.ingredients   = ingredients
+--     self.tab           = tab
+--     self.level         = level or 0
+--     self.level.ANCIENT = self.level.ANCIENT or 0
+--     self.level.MAGIC   = self.level.MAGIC or 0
+--     self.level.SCIENCE = self.level.SCIENCE or 0
+--     self.min_spacing   = min_spacing or 3.2
+--     self.nounlock      = nounlock or false
+--     self.numtogive     = numtogive or 1
+-- end
+
+AddRecipe("coolerpack", { Ingredient("manrabbit_tail", 4), Ingredient("silk", 6), Ingredient("rope", 2) }, RECIPETABS.SURVIVAL
+    , TECH.NONE, nil,
+    nil,
+    nil,
+    nil,
+    "wunny", "images/inventoryimages/coolerpack.xml")
 
 
+local containers_widgetsetup_custom = containers.widgetsetup
+local MAXITEMSLOTS = containers.MAXITEMSLOTS
 
+AddPrefabPostInit("world_network", function(inst)
+    if containers.widgetsetup ~= containers_widgetsetup_custom then
+        OVERRIDE_WIDGETSETUP = true
+        local containers_widgetsetup_base2 = containers.widgetsetup
+        function containers.widgetsetup(container, prefab)
+            containers_widgetsetup_base2(container, prefab)
+            if container.type == "coolerpack" then
+                container.type = "pack"
+            end
+        end
+    end
+    if containers.MAXITEMSLOTS < MAXITEMSLOTS then
+        containers.MAXITEMSLOTS = MAXITEMSLOTS
+    end
+end)
 
 -- The character select screen lines
 STRINGS.CHARACTER_TITLES.wunny = "The Bunny man"
@@ -151,7 +222,7 @@ AddRecipe("birchnuthat",
     "images/inventoryimages/birchnuthat.xml",
     "birchnuthat.tex")
 
-    -- AddRecipe("bunnyback", { Ingredient("pigskin", 4), Ingredient("silk", 6), Ingredient("rope", 2) }, TECH.NONE)
+-- AddRecipe("bunnyback", { Ingredient("pigskin", 4), Ingredient("silk", 6), Ingredient("rope", 2) }, TECH.NONE)
 
 
 -- AddRecipe("bunnyback", { Ingredient("manrabbit_tail", 4), Ingredient("silk", 6), Ingredient("rope", 2) },
@@ -163,7 +234,7 @@ AddRecipe("birchnuthat",
 --     nil,
 --     nil,
 --     "wunny","images/inventoryimages/coolerpack.xml")
-    -- local containers_widgetsetup_custom = containers.widgetsetup
+-- local containers_widgetsetup_custom = containers.widgetsetup
 
 -- AddRecipe("bunnyback", { Ingredient("manrabbit_tail", 4), Ingredient("silk", 6), Ingredient("rope", 2) },
 -- RECIPETABS.SURVIVAL, TECH.NONE, nil,
@@ -205,7 +276,7 @@ end)
 --             end
 --         end
 --     end
-  
+
 -- end)
 -- Add mod character to mod character list. Also specify a gender. Possible genders are MALE, FEMALE, ROBOT, NEUTRAL, and PLURAL.
-AddModCharacter("wunny", "FEMALE", skin_modes)
+AddModCharacter("wunny", "MALE", skin_modes)
