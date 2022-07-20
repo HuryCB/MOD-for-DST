@@ -96,8 +96,8 @@ params.coolerpack = {
 }
 
 for y = 0, 5 do
-    table.insert(params.coolerpack.widget.slotpos, GLOBAL.Vector3(-162, -75 * y + 100, 0))
-    table.insert(params.coolerpack.widget.slotpos, GLOBAL.Vector3(-162 + 75, -75 * y + 100, 0))
+    table.insert(params.coolerpack.widget.slotpos, GLOBAL.Vector3(-162, -75 * y + 170, 0))
+    table.insert(params.coolerpack.widget.slotpos, GLOBAL.Vector3(-162 + 75, -75 * y + 170, 0))
 end
 
 function params.coolerpack.itemtestfn(container, item, slot)
