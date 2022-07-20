@@ -87,17 +87,17 @@ params.coolerpack = {
     widget =
     {
         slotpos = {},
-        animbank = "ui_backpack_2x4",
-        animbuild = "ui_backpack_2x4",
+        animbank = "ui_piggyback_2x6",
+        animbuild = "ui_piggyback_2x6",
         pos = GLOBAL.Vector3(-5, -50, 0),
     },
     issidewidget = true,
     type = "pack",
 }
 
-for y = 0, 3 do
-    table.insert(params.coolerpack.widget.slotpos, GLOBAL.Vector3(-162, -75 * y + 114, 0))
-    table.insert(params.coolerpack.widget.slotpos, GLOBAL.Vector3(-162 + 75, -75 * y + 114, 0))
+for y = 0, 5 do
+    table.insert(params.coolerpack.widget.slotpos, GLOBAL.Vector3(-162, -75 * y + 100, 0))
+    table.insert(params.coolerpack.widget.slotpos, GLOBAL.Vector3(-162 + 75, -75 * y + 100, 0))
 end
 
 function params.coolerpack.itemtestfn(container, item, slot)
@@ -132,13 +132,20 @@ end
 --     self.numtogive     = numtogive or 1
 -- end
 
-AddRecipe("coolerpack", { Ingredient("manrabbit_tail", 4), Ingredient("silk", 6), Ingredient("rope", 2) }, RECIPETABS.SURVIVAL
+-- AddRecipe("coolerpack", { Ingredient("manrabbit_tail", 4), Ingredient("silk", 6), Ingredient("rope", 2) },
+--     RECIPETABS.SURVIVAL
+--     , TECH.NONE, nil,
+--     nil,
+--     nil,
+--     nil,
+--     "wunny", "images/inventoryimages/coolerpack.xml")
+AddRecipe("coolerpack", { Ingredient("rabbit", 1) },
+    RECIPETABS.SURVIVAL
     , TECH.NONE, nil,
     nil,
     nil,
     nil,
     "wunny", "images/inventoryimages/coolerpack.xml")
-
 
 local containers_widgetsetup_custom = containers.widgetsetup
 local MAXITEMSLOTS = containers.MAXITEMSLOTS

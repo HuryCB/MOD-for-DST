@@ -218,8 +218,9 @@ local master_postinit = function(inst)
 	inst:AddTag("balloonomancer")
 	inst:AddTag("slingshot_sharpshooter")
 	inst:AddTag("pocketwatchcaster")
+	
+	-- aspiring_bookworm
 	inst:AddTag("plantkin")
-
 	-- inst:AddTag("playermonster")
 	-- inst:AddTag("monster")
 	--confirmar--
