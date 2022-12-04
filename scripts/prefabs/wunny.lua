@@ -29,21 +29,22 @@ PrefabFiles = {
 TUNING.GAMEMODE_STARTING_ITEMS.DEFAULT.WUNNY = {
 	"rabbit",
 	"rabbit",
-	"rabbit",
-	"rabbit",
+	
+
 	"shovel",
 	"carrot",
 	"carrot",
-	"carrot",
-	"carrot",
+	-- "carrot",
+	-- "carrot",
 	"manrabbit_tail",
-	"portablecookpot_item",
-	"slingshot",
-	"slingshotammo_rock",
-	"rope",
-	"silk",
-	"silk",
-	"bluegem",
+	"manrabbit_tail",
+	-- "portablecookpot_item",
+	-- "slingshot",
+	-- "slingshotammo_rock",
+	-- "rope",
+	-- "silk",
+	-- "silk",
+	-- "bluegem",
 }
 
 local start_inv = {}

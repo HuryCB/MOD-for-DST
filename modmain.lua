@@ -132,20 +132,20 @@ end
 --     self.numtogive     = numtogive or 1
 -- end
 
--- AddRecipe("coolerpack", { Ingredient("manrabbit_tail", 4), Ingredient("silk", 6), Ingredient("rope", 2) },
---     RECIPETABS.SURVIVAL
---     , TECH.NONE, nil,
---     nil,
---     nil,
---     nil,
---     "wunny", "images/inventoryimages/coolerpack.xml")
-AddRecipe("coolerpack", { Ingredient("rabbit", 1) },
+AddRecipe("coolerpack", { Ingredient("manrabbit_tail", 4), Ingredient("silk", 6), Ingredient("rope", 2) },
     RECIPETABS.SURVIVAL
     , TECH.NONE, nil,
     nil,
     nil,
     nil,
     "wunny", "images/inventoryimages/coolerpack.xml")
+-- AddRecipe("coolerpack", { Ingredient("rabbit", 1) },
+--     RECIPETABS.SURVIVAL
+--     , TECH.NONE, nil,
+--     nil,
+--     nil,
+--     nil,
+--     "wunny", "images/inventoryimages/coolerpack.xml")
 
 local containers_widgetsetup_custom = containers.widgetsetup
 local MAXITEMSLOTS = containers.MAXITEMSLOTS
